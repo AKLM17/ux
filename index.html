@@ -3,33 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI Copy Showcase</title>
+    <title>Documentation Guide</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
             margin: 0;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
+            padding: 0;
         }
-        .iframe-container {
-            width: 800px;
-            height: 450px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        h1, h2, h3, h4 {
+            color: #00aaff;
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        p, ul, li {
+            margin: 0 0 1em 0;
+            padding: 0;
+        }
+        a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            background-color: #2d2d2d;
+            color: #d4d4d4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #d4d4d4;
+            padding: 16px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .info-box {
+            background-color: #333;
+            border-left: 4px solid #00aaff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2F9wlxhuAxotBGHl2408WScA%2FBehavioral-Launching-%252B-Signals%3Fnode-id%3D0-1%26t%3Dfub8rZGQ8qk4XuO7-1" allowfullscreen></iframe>
+    <div class="container">
+        <h1>Documentation Guide</h1>
+        <h2>Add metadata to your Markdown file</h2>
+        <div class="info-box">
+            <p>---</p>
+            <p>sidebar_position: 10 <span style="color: #7a869a;">// This file will be the first, followed by the file with <code>sidebar_position: 2</code>, and so on.</span></p>
+            <p>title: "Introduction to Context" <span style="color: #666699;">// Use quotation marks for article titles here.</span></p>
+            <p>sidebar_label: Overview <span style="color: #7a869a;">// This name will be displayed in the sidebar.</span></p>
+            <p>---</p>
+        </div>
+
+        <h2>Write in Markdown</h2>
+        <div class="info-box">
+            <p># Heading 1</p>
+            <p>## Heading 2</p>
+            <p>### Heading 3</p>
+            <p>*This text is italicized*</p>
+            <p>**This text is bold**</p>
+            <p>**_This text is bold and italicized_**</p>
+            <p>~~This text is crossed out~~</p>
+            <p>[This is a link](http://www.example.com)</p>
+            <p>![Image alt text](img/image.png)</p>
+            <ul>
+                <li>Item 1 in an unordered list</li>
+                <li>Item 2 in an unordered list</li>
+                <li>Item 3 in an unordered list</li>
+            </ul>
+        </div>
+
+        <h2>Add images</h2>
+        <div class="info-box">
+            <p><a href="https://confluence.smartassistant.com/x/cIDMC">Screenshot Guidelines</a></p>
+            <ul>
+                <li>If you're about to create an article for a new or undocumented feature within a studio, make sure to <strong>create an image folder</strong> for it within the main image folder.</li>
+                <li>Example: This is the path to an image for a Zoe document within the Advisor Studio &gt; Zoe folder:<br>
+                    <code>\partner-documentation\docs\advisor-studio\zoe\img\zoe_editor.png</code>
+                </li>
+                <li>Find your image on the list of files, right-click and select "Copy Relative Path". Paste the relative path inside brackets.</li>
+                <li>Use the "BrowserWindow" component to add shadow borders to your images (you can replace the link below -<span style="color: #3366ff;"> url="https://orca-advisor.zoovu.com"</span>) with the link to any studio:</li>
+            </ul>
+        </div>
+        <pre>&lt;BrowserWindow url="https://orca-advisor.zoovu.com"&gt;<br>
+![Screenshot description](img/zoe_editor.png)<br>
+&lt;/BrowserWindow&gt;</pre>
+        <p>For the BrowserWindow component to work, please make sure to add this line to your article right below the metadata:<br>
+        <code>import BrowserWindow from "@site/src/components/BrowserWindow";</code></p>
+
+        <h2>Add code blocks</h2>
+        <p>This is the code used to generate the text below, which contains both inline code snippets and a code block:</p>
+        <pre>It is possible to include some basic logic in the templates.<br>
+The following example will print `Welcome back!` if the recurring attribute has a `true` value,<br>
+otherwise it will print `Welcome!`.<br><br>
+```plaintext<br>
+Welcome {{ context.recurring ? 'back' : ''}}!<br>
+```</pre>
+        <ul>
+            <li>Use single backticks for inline code: print `Welcome!`</li>
+            <li>Type 3 backticks ``` above and below your code blocks; specifying a language for syntax highlighting next to the top backticks, e.g. <strong>``` html</strong></li>
+        </ul>
+
+        <h2>Add tables</h2>
+        <p>This is the code used for generating the table pictured below:</p>
+        <pre>| Scope | Description |<br>
+|--- |--- |<br>
+| SESSION | The data will no longer be accessible after the session |<br>
+| DOMAIN | The data will be persisted on the user's machine and can be used again for future sessions in this and other assistants on the same domain |<br>
+| PROVIDED | The data will be provided by the customer |<br>
+| CONFIGURATION | Same as session, but had different identifier to clearly mark that this does not serve any personalization.<br>
+This will not be sent to the backend. |</pre>
+        <p>The table consists of:</p>
+        <ul>
+            <li>Table headers: <code>| Scope | Description |</code></li>
+            <li>This element signifying the number of columns: <code>|--- |--- |</code></li>
+            <li>Rows separated by "|"</li>
+        </ul>
+
+        <h2>Add notes/warnings</h2>
+        <p>Docusaurus allows you to add admonitions to your articles:</p>
+        <pre>:::note<br>
+This is a note.<br>
+:::<br><br>
+:::tip<br>
+This is a helpful tip.<br>
+:::<br><br>
+:::info<br>
+This is an info box.<br>
+:::<br><br>
+:::warning<br>
+This is a warning. Try to use it only where absolutely necessary - warnings make people anxious.<br>
+:::<br><br>
+:::danger<br>
+This is the scariest type of warning.<br>
+:::</pre>
+
+        <h2>Add diagrams</h2>
+        <p>See: <strong><a href="https://docusaurus.io/docs/markdown-features/diagrams">Create diagrams</a></strong></p>
+
+        <h2>Restrict access to a document</h2>
+        <p>Sometimes you may want to make a doc accessible only to other Zoovu employees or a specific Client. For example, when ZOE was first developed we only wanted selected Clients to know about it.</p>
+        <ul>
+            <li>If it's for internal use only, you can use this repository for such content: <a href="https://gitlab.zoovu.io/technical-documentation/internal-documentation">https://gitlab.zoovu.io/technical-documentation/internal-documentation</a></li>
+            <li>If it's a doc for specific Clients, you can use the <strong>unlisted feature</strong> provided by Docusaurus (the <code>unlisted: true</code> front matter option) to hide certain pages from production build. They will be accessible via direct links. Unlisted content will also display a banner so that you don't forget to turn it off once your content is ready for publishing.</li>
+        </ul>
+        <pre>---<br>
+title: Markdown Page<br>
+description: Markdown page description<br>
+unlisted: true<br>
+---</pre>
     </div>
 </body>
 </html>

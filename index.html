@@ -57,7 +57,9 @@
 </head>
 <body>
     <div class="container">
-        <h1>Documentation Guide</h1>
+        <h1>How to write a document in Markdown with Docusaurus styling</h1>
+        <h2>Add metadata to your file</h2>
+        <p>Here's how to add metadata to your Markdown files to determine how the article is displayed in the sidebar.</p>
         <div class="info-box">
             <p>---</p>
             <p>sidebar_position: 10 <span style="color: #7a869a;">// This file will be the first, followed by the file with <code>sidebar_position: 2</code>, and so on.</span></p>
@@ -67,6 +69,7 @@
         </div>
 
         <h2>Write in Markdown</h2>
+        <p>Let's go over the basics of writing in Markdown, like headings, formatting text, adding links, images, and creating lists.</p>
         <div class="info-box">
             <p># Heading 1</p>
             <p>## Heading 2</p>
@@ -149,11 +152,8 @@ This is a warning. Try to use it only where absolutely necessary - warnings make
 This is the scariest type of warning.<br>
 :::</pre>
 
-        <h2>Add diagrams</h2>
-        <p>See: <strong><a href="https://docusaurus.io/docs/markdown-features/diagrams">Create diagrams</a></strong></p>
-
-        <h2>Restrict access to a document</h2>
-        <p>Sometimes you may want to make a doc accessible only to other Zoovu employees or a specific Client. For example, when ZOE was first developed we only wanted selected Clients to know about it.</p>
+        <h2>Restrict access</h2>
+        <p>Sometimes you may want to make a doc accessible only to other Zoovu employees or a specific Client.</p>
         <ul>
             <li>If it's for internal use only, you can use this repository for such content: <a href="https://gitlab.zoovu.io/technical-documentation/internal-documentation">https://gitlab.zoovu.io/technical-documentation/internal-documentation</a></li>
             <li>If it's a doc for specific Clients, you can use the <strong>unlisted feature</strong> provided by Docusaurus (the <code>unlisted: true</code> front matter option) to hide certain pages from production build. They will be accessible via direct links. Unlisted content will also display a banner so that you don't forget to turn it off once your content is ready for publishing.</li>
